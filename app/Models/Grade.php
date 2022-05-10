@@ -17,5 +17,15 @@ class Grade extends Model
         'notes',
     ];
 
+    /**
+     * Relations
+     */
+
+    // With Classrooms
+    public function classrooms() {
+        return $this->hasMany(Classroom::class);
+    }
+
+
 
 }

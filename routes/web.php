@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\Dashboard\GradesController;
-use App\Http\Controllers\Dashboard\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\HomeController;
+use App\Http\Controllers\Dashboard\GradesController;
+use App\Http\Controllers\Dashboard\ClassroomsController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -51,5 +52,24 @@ Route::group(
                 Route::delete('/{id}', [GradesController::class, 'destroy'])->name('delete');
             });
         // End Grade Page
+
+        // Start Classes Page
+        Route::group(
+            [
+                'prefix' => 'classrooms',
+                'as' => 'classroom.',
+            ], function() {
+                Route::get('/', [ClassroomsController::class, 'index'])->name('index');
+                Route::get('/create', [ClassroomsController::class, 'create'])->name('create');
+                Route::post('/', [ClassroomsController::class, 'store'])->name('store');
+                Route::get('/{id}/edit', [ClassroomsController::class, 'edit'])->name('edit');
+                Route::patch('/{id}', [ClassroomsController::class, 'update'])->name('update');
+                Route::delete('/{id}', [ClassroomsController::class, 'destroy'])->name('delete');
+                // Delete Selected
+                Route::post('/delete', [ClassroomsController::class, 'deleteAll'])->name('delete_all');
+                // Search Route
+                Route::post('/search', [ClassroomsController::class, 'search'])->name('search');
+            });
+        // End Classes Page
     }
 );

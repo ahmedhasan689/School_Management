@@ -181,7 +181,7 @@
                                                        {{ __('grades-page.Delete') }}
                                                    </h6>
                                                    <div class="modal-footer">
-                                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('grades-page.Close') }}</button>
+                                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('grades-page.Close') }}</button>
                                                        <button type="submit" class="btn btn-danger">{{ __('grades-page.Sure') }}</button>
                                                    </div>
                                                </form>

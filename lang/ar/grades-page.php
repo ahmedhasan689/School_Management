@@ -18,6 +18,8 @@ return [
     'Edit' => 'تعديل',
     'Delete' => 'هل أنت متأكد من عملية الحذف  ؟',
     'Close' => 'اغلاق',
+    'exists' => 'أسم المرحلة موجود مسبقاً',
+    'error_delete' => 'هناك صفوف دراسية تتعلق بالمرحلة ، لا يمكنك الحذف',
     'Data has been saved successfully!' => 'تم إضافة البيانات بنجاح !',
     'Data has been Updated successfully!' => 'تم تعديل البيانات بنجاح !',
     'Data has been Deleted successfully!' => 'تم حذف البيانات بنجاح !',

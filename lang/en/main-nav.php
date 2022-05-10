@@ -16,6 +16,8 @@ return [
     'Dashboard' => 'Dashboard',
     'Grades' => 'Grades',
     'Grades_List' => 'Grade List',
-    'Change_Language' => 'Change Language'
+    'Change_Language' => 'Change Language',
+    'Class' => 'Classes',
+    'Class_list' => 'Class list',
 
 ];

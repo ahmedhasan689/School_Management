@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Dashboard;
 
 
+use App\Models\Grade;
+use App\Models\Classroom;
 use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\GradeStoreRequest;
-
-use App\Models\Grade;
+use CodeZero\UniqueTranslation\UniqueTranslationRule;
 
 class GradesController extends Controller
 {
@@ -40,6 +42,11 @@ class GradesController extends Controller
      */
     public function store(GradeStoreRequest $request)
     {
+
+        if ( Grade::where('name->ar', $request->Name)->orWhere('Name->en', $request->Name_en)->exists() ){
+            return redirect()->back()->withErrors( __('grades-page.exists') );
+        };
+
         $validated = $request->validated();
 
         // $grade = new Grade();
@@ -125,10 +132,19 @@ class GradesController extends Controller
     {
         $grade = Grade::findOrFail($id);
 
-        $grade->delete();
+        $classrooms = Classroom::where('grade_id', $grade->id)->pluck('grade_id');
 
-        toastr()->success( __('grades-page.Data has been Deleted successfully!') );
+        // If Count == 0 (No Classroom Inside This Grade)
+        if ($classrooms->count() == 0) {
+            $grade->delete();
 
-        return redirect()->route('grade.index');
+            toastr()->success( __('grades-page.Data has been Deleted successfully!') );
+
+            return redirect()->route('grade.index');
+        } else {
+            toastr()->error( __('grades-page.error_delete') );
+
+            return redirect()->route('grade.index');
+        }
     }
 }

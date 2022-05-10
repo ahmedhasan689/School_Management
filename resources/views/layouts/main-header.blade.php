@@ -18,10 +18,10 @@
                     <div class="search">
                         <a class="search-btn not_click" href="javascript:void(0);"></a>
                         <div class="search-box not-click">
-                            <input type="text" class="not-click form-control" placeholder="Search" value=""
-                                name="search">
-                            <button class="search-button" type="submit"> <i
-                                    class="fa fa-search not-click"></i></button>
+                            <input type="text" class="not-click form-control" placeholder="Search" value="" name="search">
+                            <button class="search-button" type="submit">
+                                <i class="fa fa-search not-click"></i>
+                            </button>
                         </div>
                     </div>
                 </li>

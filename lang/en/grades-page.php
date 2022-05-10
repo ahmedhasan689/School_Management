@@ -18,6 +18,8 @@ return [
     'Edit' => 'Edit',
     'Delete' => 'Are You Sure ?',
     'Close' => 'Close',
+    'exists' => 'The Stage Is Already Exists',
+    'error_delete' => 'There Is Classroom Inside This Grade !',
     'Data has been saved successfully!' => 'Data has been saved successfully!',
     'Data has been Updated successfully!' => 'Data has been Updated successfully!',
     'Data has been Deleted successfully!' => 'Data has been Deleted successfully!',
