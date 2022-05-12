@@ -19,5 +19,7 @@ return [
     'Change_Language' => 'تغيير اللغة',
     'Class' => 'الفصول',
     'Class_list' => 'قائمة الفصول',
+    'Section' => 'الأقسام',
+    'Section_List' => 'قائمة الأقسام المدرسية',
 
 ];

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\GradesController;
 use App\Http\Controllers\Dashboard\ClassroomsController;
+use App\Http\Controllers\Dashboard\SectionController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -71,5 +72,22 @@ Route::group(
                 Route::post('/search', [ClassroomsController::class, 'search'])->name('search');
             });
         // End Classes Page
+
+        // Start Section Route
+        Route::group([
+            'prefix' => 'sections',
+            'as' => 'section.'
+        ], function() {
+             Route::get('/', [SectionController::class, 'index'])->name('index');
+             Route::get('/create', [SectionController::class, 'create'])->name('create');
+             Route::post('/', [SectionController::class, 'store'])->name('store');
+             Route::get('/{id}/edit', [SectionController::class, 'edit'])->name('edit');
+             Route::patch('/{id}', [SectionController::class, 'update'])->name('update');
+             Route::delete('/{id}', [SectionController::class, 'destroy'])->name('delete');
+
+            // For Ajax (Get_class) Function
+            Route::get('/class/{id}', [SectionController::class, 'getClass'])->name('get_class');
+        });
+        // End Section Route
     }
 );

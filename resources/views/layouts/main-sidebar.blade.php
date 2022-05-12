@@ -40,7 +40,7 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#elements">
                             <div class="pull-left">
-                                <i class="ti-palette"></i>
+                                <i class="ti-layout"></i>
                                 <span class="right-nav-text">{{ __('main-nav.Grades') }}</span>
                             </div>
                             <div class="pull-right">
@@ -52,6 +52,7 @@
                         </a>
                         <ul id="elements" class="collapse" data-parent="#sidebarnav">
                             <li>
+
                                 <a href="{{ route('grade.index') }}">
                                     {{ __('main-nav.Grades_List') }}
                                 </a>
@@ -76,11 +77,11 @@
                             <li><a href="touchspin.html">touchspin</a></li> --}}
                         </ul>
                     </li>
-                    <!-- menu item calendar-->
+                    <!-- menu item classroom-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#calendar-menu">
                             <div class="pull-left">
-                                <i class="ti-calendar"></i>
+                                <i class="ti-agenda"></i>
                                 <span class="right-nav-text">
                                     {{ __('main-nav.Class') }}
                                 </span>
@@ -99,10 +100,28 @@
                         </ul>
                     </li>
                     <!-- menu item todo-->
-                    {{-- <li>
-                        <a href="todo-list.html"><i class="ti-menu-alt"></i><span class="right-nav-text">Todo
-                                list</span> </a>
-                    </li> --}}
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#section-menu">
+                            <div class="pull-left">
+                                <i class="ti-menu-alt"></i>
+                                <span class="right-nav-text">
+                                    {{ __('main-nav.Section') }}
+                                </span>
+                            </div>
+                            <div class="pull-right">
+                                <i class="ti-plus"></i>
+                            </div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="section-menu" class="collapse" data-parent="#sidebarnav">
+                            <li>
+                                <a href="{{ route('section.index') }}">
+                                    {{ __('main-nav.Section_List') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <!-- menu item chat-->
                     {{-- <li>
                         <a href="chat-page.html"><i class="ti-comments"></i><span class="right-nav-text">Chat

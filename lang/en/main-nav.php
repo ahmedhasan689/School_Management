@@ -19,5 +19,7 @@ return [
     'Change_Language' => 'Change Language',
     'Class' => 'Classes',
     'Class_list' => 'Class list',
+    'Section' => 'Sections',
+    'Section_List' => 'Section List',
 
 ];
