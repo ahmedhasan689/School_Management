@@ -89,5 +89,15 @@ Route::group(
             Route::get('/class/{id}', [SectionController::class, 'getClass'])->name('get_class');
         });
         // End Section Route
+
+        // Start Parent Route [ **No Controller Just Livewire** ]
+        Route::group([
+            'prefix' => 'parents',
+            'as' => 'parent.',
+        ], function () {
+            // Route::view('/','livewire.parents.my-parent')->name('index');
+            Route::view('/create', 'livewire.parents.create')->name('create');
+        });
+        // End Parent Route [ **No Controller Just Livewire** ]
     }
 );

@@ -21,5 +21,8 @@ return [
     'Class_list' => 'Class list',
     'Section' => 'Sections',
     'Section_List' => 'Section List',
+    'Parent' => 'Parent',
+    'Parent_List' => 'Parent List',
+    'Add_Parent' => 'Add Parent',
 
 ];

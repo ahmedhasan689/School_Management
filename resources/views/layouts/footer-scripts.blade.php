@@ -6,6 +6,9 @@
 <script type="text/javascript">
     var plugin_path = '{{ asset('assets/js') }}/';
 </script>
+{{-- Font-Awesome (6) --}}
+<script src="https://kit.fontawesome.com/2f70d007a1.js" crossorigin="anonymous"></script>
+
 
 <!-- chart -->
 <script src="{{ URL::asset('assets/js/chart-init.js') }}"></script>

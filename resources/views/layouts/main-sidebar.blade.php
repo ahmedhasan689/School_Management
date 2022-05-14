@@ -40,7 +40,7 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#elements">
                             <div class="pull-left">
-                                <i class="ti-layout"></i>
+                                <i class="fa-solid fa-school"></i>
                                 <span class="right-nav-text">{{ __('main-nav.Grades') }}</span>
                             </div>
                             <div class="pull-right">
@@ -81,7 +81,7 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#calendar-menu">
                             <div class="pull-left">
-                                <i class="ti-agenda"></i>
+                                <i class="fa-solid fa-house-chimney-user"></i>
                                 <span class="right-nav-text">
                                     {{ __('main-nav.Class') }}
                                 </span>
@@ -103,7 +103,7 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#section-menu">
                             <div class="pull-left">
-                                <i class="ti-menu-alt"></i>
+                                <i class="fa-solid fa-vector-square"></i>
                                 <span class="right-nav-text">
                                     {{ __('main-nav.Section') }}
                                 </span>
@@ -117,6 +117,33 @@
                             <li>
                                 <a href="{{ route('section.index') }}">
                                     {{ __('main-nav.Section_List') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#parent-menu">
+                            <div class="pull-left">
+                                <i class="fa-solid fa-elevator"></i>
+                                <span class="right-nav-text">
+                                    {{ __('main-nav.Parent') }}
+                                </span>
+                            </div>
+                            <div class="pull-right">
+                                <i class="ti-plus"></i>
+                            </div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="parent-menu" class="collapse" data-parent="#sidebarnav">
+                            <li>
+                                <a href="#">
+                                    {{ __('main-nav.Parent_List') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('parent.create') }}">
+                                    {{ __('main-nav.Add_Parent') }}
                                 </a>
                             </li>
                         </ul>

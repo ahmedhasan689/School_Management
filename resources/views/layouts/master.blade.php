@@ -38,11 +38,9 @@
 
             @yield('content')
 
-            <!--=================================
- wrapper -->
+            <!-- wrapper -->
 
-            <!--=================================
- footer -->
+            <!-- footer -->
 
             @include('layouts.footer')
         </div><!-- main content wrapper end-->
