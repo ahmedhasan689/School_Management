@@ -36,5 +36,6 @@ return [
     'Back' => 'Back',
     'Sure' => 'Are You Sure ?',
     'Finish' => 'Finish',
+    'Success' => 'Parents Successfully Created !',
 
 ];

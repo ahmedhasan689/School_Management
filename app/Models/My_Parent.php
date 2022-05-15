@@ -4,10 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
-class MyParent extends Model
+class My_Parent extends Model
 {
-    use HasFactory;
+    use HasFactory, HasTranslations;
+
+    public $translatable = ['father_name', 'father_job', 'mother_name', 'mother_job'];
+
+    protected $table = 'my_parents';
+
     protected $fillable = [
         'email',
         'password',
