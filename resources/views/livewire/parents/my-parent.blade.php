@@ -40,14 +40,21 @@
     <div class="row setup-content {{ $currentStep != 3 ? 'displayNone' : '' }} mx-2" id="step-3">
         @if ($currentStep != 3)
             <div style="display: none" class="row setup-content" id="step-3">
-        @else
-            <div style="display: block" class="row setup-content" id="step-3">
         @endif
                 <div class="col-xs-12">
                     <div class="col-md-12">
-                        <h3 style="font-family: 'Cairo', sans-serif;" class="my-2">
-                            {{ __('parent-page.Sure') }}
-                        </h3>
+{{--                        <h3 style="font-family: 'Cairo', sans-serif;" class="my-2">--}}
+{{--                            {{ __('parent-page.Sure') }}--}}
+{{--                        </h3>--}}
+{{--                        <br>--}}
+                        <label style="color: red">
+                            {{ __('parent-page.Attachment') }}
+                        </label>
+
+                        <div class="form-group">
+                            <input type="file" wire:model="attachments" accept="image/*" multiple>
+                        </div>
+
                         <br>
                         <button class="btn btn-danger btn-sm nextBtn btn-lg pull-right mx-1" type="button" wire:click="back(2)">
                             {{ __('parent-page.Back') }}
@@ -58,6 +65,6 @@
                     </div>
                 </div>
             </div>
-    </div>
+
 
 </div>

@@ -4,12 +4,16 @@ namespace App\Http\Livewire;
 
 use App\Models\BloodType;
 use App\Models\Nationality;
+use App\Models\ParentAttachment;
 use App\Models\Religion;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use App\Models\My_Parent;
 
 class MyParent extends Component
 {
+    use WithFileUploads;
+
     public $currentStep = 1;
     public $successMessage = '',
 
@@ -24,7 +28,10 @@ class MyParent extends Component
     $mother_name, $mother_name_en, $mother_job,
     $mother_job_en, $mother_national_id, $mother_passport_id,
     $mother_phone, $mother_nationality_id, $mother_blood_type,
-    $mother_religion, $mother_address;
+    $mother_religion, $mother_address,
+
+    // Attachment
+    $attachments;
 
     // Real-Time Validation
     public function updated($propertyName)
@@ -125,6 +132,19 @@ class MyParent extends Component
 
         $my_parent->save();
 
+        // Attachments
+        if(!empty($this->attachments)) {
+            foreach($this->attachments as $attachment) {
+                // storeAs (Directory[ Folder ], File_name, Disk);
+                $attachment->storeAs($this->father_national_id, $attachment->getClientOriginalName(), $disk='parent_attachment');
+
+                ParentAttachment::create([
+                    'file_name' => $attachment->getClientOriginalName(),
+                    'parent_id' => My_Parent::latest()->first()->id,
+                ]);
+            }
+        }
+        
         $this->successMessage = __('parent-page.Success');
         $this->clearForm();
         $this->currentStep = 1;

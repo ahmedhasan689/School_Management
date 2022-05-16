@@ -4,6 +4,7 @@
         <div class="col-xs-12">
             <div class="col-md-12">
                 <br>
+
                 <div class="form-row my-2">
                     {{-- Email --}}
                     <div class="col">
@@ -26,8 +27,8 @@
                         <input type="password" wire:model="Password" class="form-control">
                         @error('Password')
                             <div class="alert alert-danger">
-                                {{ $message }}<
-                                /div>
+                                {{ $message }}
+                            </div>
                         @enderror
                     </div>
                 </div>
@@ -123,7 +124,6 @@
                             </div>
                         @enderror
                     </div>
-
                 </div>
 
 
@@ -217,4 +217,5 @@
             </div>
         </div>
     </div>
+
 

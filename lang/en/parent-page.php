@@ -6,7 +6,7 @@ return [
     'Add_Parent' => 'Add Parent',
     'Step-1' => 'Father Information',
     'Step-2' => 'Mother Information',
-    'Step-3' => 'Submit',
+    'Step-3' => 'Attachment & Submit',
     'Email' => 'Email',
     'Password' => 'Password',
     'father_name' => 'Father Name',
@@ -37,5 +37,6 @@ return [
     'Sure' => 'Are You Sure ?',
     'Finish' => 'Finish',
     'Success' => 'Parents Successfully Created !',
+    'Attachment' => 'Add Attachment',
 
 ];
