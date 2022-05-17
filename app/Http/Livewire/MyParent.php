@@ -2,13 +2,14 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\BloodType;
-use App\Models\Nationality;
-use App\Models\ParentAttachment;
-use App\Models\Religion;
 use Livewire\Component;
-use Livewire\WithFileUploads;
+use App\Models\Religion;
+use App\Models\BloodType;
 use App\Models\My_Parent;
+use App\Models\Nationality;
+use Livewire\WithFileUploads;
+use App\Models\ParentAttachment;
+use Illuminate\Support\Facades\File;
 
 class MyParent extends Component
 {
@@ -298,8 +299,15 @@ class MyParent extends Component
 
         if($attachments) {
             foreach($attachments as $attachment) {
-                unlink(public_path('attachment/' . $my_parent->father_national_id . '/' . $attachment->file_name));
+
+                // unlink(public_path('attachment/' . $my_parent->father_national_id . '/' . $attachment->file_name));
+
                 $attachment->delete();
+
+                if( File::exists( public_path('attachment/' . $my_parent->father_national_id) ) ) {
+                    File::deleteDirectory(public_path('attachment/' . $my_parent->father_national_id));
+                }
+
             }
         }
 
