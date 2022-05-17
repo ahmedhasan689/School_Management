@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-    {{ __('parent-page.Add_Parent') }}
+    {{ __('parent-page.Parents') }}
 @stop
 @endsection
 @section('page-header')
@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-sm-6">
             <h4 class="mb-0">
-                {{ __('parent-page.Add_Parent') }}
+                {{ __('parent-page.Parents') }}
             </h4>
         </div>
         <div class="col-sm-6">
@@ -22,7 +22,7 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item active">
-                    {{ __('parent-page.Add_Parent') }}
+                    {{ __('parent-page.Parents') }}
                 </li>
             </ol>
         </div>

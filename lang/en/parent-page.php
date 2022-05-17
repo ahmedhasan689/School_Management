@@ -3,6 +3,7 @@
 return [
 
     'Home' => 'Home',
+    'Parents' => 'Parents',
     'Add_Parent' => 'Add Parent',
     'Step-1' => 'Father Information',
     'Step-2' => 'Mother Information',
@@ -37,6 +38,9 @@ return [
     'Sure' => 'Are You Sure ?',
     'Finish' => 'Finish',
     'Success' => 'Parents Successfully Created !',
+    'Edit' => 'Parents Successfully Updated !',
+    'delete' => 'Parents Successfully Deleted !',
     'Attachment' => 'Add Attachment',
+    'Processes' => 'Processes',
 
 ];

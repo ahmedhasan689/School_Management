@@ -1,12 +1,12 @@
-@if ($currentStep != 2)
-    <div style="display: none" class="row setup-content" id="step-2">
+@if ($currentStep != 1)
+    <div style="display: none" class="row setup-content" id="step-1">
 @endif
         <div class="col-xs-12">
             <div class="col-md-12">
                 <br>
 
                 <div class="form-row my-2">
-                    {{-- Email --}}
+                {{-- Email --}}
                     <div class="col">
                         <label for="title">
                             {{ __('parent-page.Email') }}
@@ -34,24 +34,24 @@
                 </div>
 
                 <div class="form-row my-2">
-                    {{-- mother_name (ar) --}}
+                    {{-- Father_name (ar) --}}
                     <div class="col">
                         <label for="title">
-                            {{ __('parent-page.mother_name') }}
+                            {{ __('parent-page.father_name') }}
                         </label>
-                        <input type="text" wire:model="mother_name" class="form-control">
-                        @error('mother_name')
+                        <input type="text" wire:model="father_name" class="form-control">
+                        @error('father_name')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
-                    {{-- mother_name (en) --}}
+                    {{-- Father_name (en) --}}
                     <div class="col">
                         <label for="title">
-                            {{ __('parent-page.mother_name_en') }}
+                            {{ __('parent-page.father_name_en') }}
                         </label>
-                        <input type="text" wire:model="mother_name_en" class="form-control">
-                        @error('mother_name_en')
+                        <input type="text" wire:model="father_name_en" class="form-control">
+                        @error('father_name_en')
                             <div class="alert alert-danger">
                                 {{ $message }}
                             </div>
@@ -60,65 +60,65 @@
                 </div>
 
                 <div class="form-row my-2">
-                    {{-- mother Job (ar) --}}
+                    {{-- father Job (ar) --}}
                     <div class="col-md-3">
                         <label for="title">
-                            {{ __('parent-page.mother_job') }}
+                            {{ __('parent-page.father_job') }}
                         </label>
-                        <input type="text" wire:model="mother_job" class="form-control">
-                        @error('mother_job')
+                        <input type="text" wire:model="father_job" class="form-control">
+                        @error('father_job')
                             <div class="alert alert-danger">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
 
-                    {{-- mother Job (en) --}}
+                    {{-- father Job (en) --}}
                     <div class="col-md-3">
                         <label for="title">
-                            {{ __('parent-page.mother_job_en') }}
+                            {{ __('parent-page.father_job_en') }}
                         </label>
-                        <input type="text" wire:model="mother_job_en" class="form-control">
-                        @error('mother_job_en')
+                        <input type="text" wire:model="father_job_en" class="form-control">
+                        @error('father_job_en')
                             <div class="alert alert-danger">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
 
-                    {{-- mother national_id --}}
+                    {{-- father national_id --}}
                     <div class="col">
                         <label for="title">
-                            {{ __('parent-page.mother_national_id') }}
+                            {{ __('parent-page.father_national_id') }}
                         </label>
-                        <input type="text" wire:model="mother_national_id" class="form-control">
-                        @error('mother_national_id')
+                        <input type="text" wire:model="father_national_id" class="form-control">
+                        @error('father_national_id')
                             <div class="alert alert-danger">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
 
-                    {{-- mother Passport --}}
+                    {{-- Father Passport --}}
                     <div class="col">
                         <label for="title">
-                            {{ __('parent-page.mother_passport_id') }}
+                            {{ __('parent-page.father_passport_id') }}
                         </label>
-                        <input type="text" wire:model="mother_passport_id" class="form-control">
-                        @error('mother_passport_id')
+                        <input type="text" wire:model="father_passport_id" class="form-control">
+                        @error('father_passport_id')
                             <div class="alert alert-danger">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
 
-                    {{-- mother_Phone --}}
+                    {{-- Father_Phone --}}
                     <div class="col">
                         <label for="title">
-                            {{ __('parent-page.mother_phone') }}
+                            {{ __('parent-page.father_phone') }}
                         </label>
-                        <input type="text" wire:model="mother_phone" class="form-control">
-                        @error('mother_phone')
+                        <input type="text" wire:model="father_phone" class="form-control">
+                        @error('father_phone')
                             <div class="alert alert-danger">
                                 {{ $message }}
                             </div>
@@ -130,9 +130,9 @@
                 <div class="form-row my-2">
                     <div class="form-group col-md-6">
                         <label for="inputCity">
-                            {{ __('parent-page.mother_nationality') }}
+                            {{ __('parent-page.father_nationality') }}
                         </label>
-                        <select class="custom-select my-1 mr-sm-2" wire:model="mother_nationality_id">
+                        <select class="custom-select my-1 mr-sm-2" wire:model="father_nationality_id">
                             <option selected>
                                 {{ __('parent-page.Choose') }}...
                             </option>
@@ -142,19 +142,19 @@
                                 </option>
                             @endforeach
                         </select>
-                        @error('mother_nationality_id')
+                        @error('father_nationality_id')
                             <div class="alert alert-danger">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
 
-                    {{-- Blood Type Of mother --}}
+                    {{-- Blood Type Of Father --}}
                     <div class="form-group col">
                         <label for="inputState">
-                            {{ __('parent-page.mother_blood_type') }}
+                            {{ __('parent-page.father_blood_type') }}
                         </label>
-                        <select class="custom-select my-1 mr-sm-2" wire:model="mother_blood_type">
+                        <select class="custom-select my-1 mr-sm-2" wire:model="father_blood_type">
                             <option selected>{{ __('parent-page.Choose') }}...</option>
                             @foreach ($bloodTypes as $bloodType)
                                 <option value="{{ $bloodType->id }}">
@@ -162,19 +162,19 @@
                                 </option>
                             @endforeach
                         </select>
-                        @error('mother_blood_type')
+                        @error('father_blood_type')
                             <div class="alert alert-danger">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
 
-                    {{-- Religion Of mother --}}
+                    {{-- Religion Of Father --}}
                     <div class="form-group col">
                         <label for="inputZip">
-                            {{ __('parent-page.mother_religion') }}
+                            {{ __('parent-page.father_religion') }}
                         </label>
-                        <select class="custom-select my-1 mr-sm-2" wire:model="mother_religion">
+                        <select class="custom-select my-1 mr-sm-2" wire:model="father_religion">
                             <option selected>
                                 {{ __('parent-page.Choose') }}...
                             </option>
@@ -184,7 +184,7 @@
                                 </option>
                             @endforeach
                         </select>
-                        @error('mother_religion')
+                        @error('father_religion')
                             <div class="alert alert-danger">
                                 {{ $message }}
                             </div>
@@ -192,30 +192,29 @@
                     </div>
                 </div>
 
-                {{-- mother Address --}}
+                {{-- Father Address --}}
                 <div class="form-group my-2">
                     <label for="exampleFormControlTextarea1">
-                        {{ __('parent-page.mother_address') }}
+                        {{ __('parent-page.father_address') }}
                     </label>
-                    <textarea class="form-control" wire:model="mother_address" id="exampleFormControlTextarea1" rows="4"></textarea>
-                    @error('mother_address')
+                    <textarea class="form-control" wire:model="father_address" id="exampleFormControlTextarea1" rows="4"></textarea>
+                    @error('father_address')
                         <div class="alert alert-danger">
                             {{ $message }}
                         </div>
                     @enderror
                 </div>
 
-                {{-- Back --}}
-                <button class="btn btn-danger btn-sm nextBtn btn-lg pull-right mx-1" type="button" wire:click="back(1)">
-                    {{ __('parent-page.Back')}}
-                </button>
-
                 {{-- Submit --}}
-                <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" wire:click="secondStepSubmit" type="button">
-                    {{ __('parent-page.Next') }}
-                </button>
+                @if($edit_mode)
+                    <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" wire:click="firstEditSubmit" type="button">
+                        {{ __('parent-page.Next') }}
+                    </button>
+                @else
+                    <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" wire:click="firstStepSubmit" type="button">
+                        {{ __('parent-page.Next') }}
+                    </button>
+                @endif
             </div>
         </div>
     </div>
-
-

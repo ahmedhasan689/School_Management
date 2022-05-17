@@ -95,8 +95,7 @@ Route::group(
             'prefix' => 'parents',
             'as' => 'parent.',
         ], function () {
-            // Route::view('/','livewire.parents.my-parent')->name('index');
-            Route::view('/create', 'livewire.parents.create')->name('create');
+            Route::view('/', 'livewire.index')->name('index');
         });
         // End Parent Route [ **No Controller Just Livewire** ]
     }

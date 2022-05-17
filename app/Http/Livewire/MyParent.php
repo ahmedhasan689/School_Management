@@ -17,6 +17,7 @@ class MyParent extends Component
     public $currentStep = 1;
     public $successMessage = '',
 
+
     // Father Inputs
     $Email, $Password, $father_name,
     $father_name_en, $father_job, $father_job_en,
@@ -31,7 +32,23 @@ class MyParent extends Component
     $mother_religion, $mother_address,
 
     // Attachment
-    $attachments;
+    $attachments,
+
+    // Form Mode
+    $show_table = true,
+
+    // Edit Mode
+    $edit_mode = false;
+
+    public function render()
+    {
+        return view('livewire.my-parent', [
+            'nationalities' => Nationality::all(),
+            'bloodTypes' => BloodType::all(),
+            'religions' => Religion::all(),
+            'my_parents' => My_Parent::all(),
+        ]);
+    }
 
     // Real-Time Validation
     public function updated($propertyName)
@@ -44,16 +61,6 @@ class MyParent extends Component
             'mother_national_id' => 'required|min:10|max:10|regex:/[0-9]{9}/',
             'mother_passport_id' => 'min:10|max:10',
             'mother_phone' => 'min:10|regex:/^([0-9\s\-\+\(\)]*)$/',
-        ]);
-    }
-
-
-    public function render()
-    {
-        return view('livewire.parents.my-parent', [
-            'nationalities' => Nationality::all(),
-            'bloodTypes' => BloodType::all(),
-            'religions' => Religion::all(),
         ]);
     }
 
@@ -144,10 +151,11 @@ class MyParent extends Component
                 ]);
             }
         }
-        
+
         $this->successMessage = __('parent-page.Success');
         $this->clearForm();
         $this->currentStep = 1;
+        $this->show_table = true;
     }
 
     public function clearForm()
@@ -158,7 +166,6 @@ class MyParent extends Component
         $this->father_name_en = '';
         $this->father_job_en = '';
         $this->father_job = '';
-        $this->father_job_en = '';
         $this->father_national_id = '';
         $this->father_passport_id = '';
         $this->father_phone = '';
@@ -179,5 +186,124 @@ class MyParent extends Component
         $this->mother_blood_type = '';
         $this->mother_religion = '';
         $this->mother_address = '';
+    }
+
+    public function showAddForm()
+    {
+        $this->show_table = false;
+    }
+
+    public function edit($id)
+    {
+        $this->show_table = false;
+        $this->edit_mode = true;
+
+        $my_parent = My_Parent::where('id', $id)->first();
+
+        $this->parent_id = $id;
+        $this->Email = $my_parent->email;
+        $this->Password = $my_parent->password;
+        $this->father_name = $my_parent->getTranslation('father_name', 'ar');
+        $this->father_name_en = $my_parent->getTranslation('father_name', 'en');
+        $this->father_job_en = $my_parent->getTranslation('father_job', 'en');
+        $this->father_job = $my_parent->getTranslation('father_job', 'ar');
+        $this->father_national_id = $my_parent->father_national_id;
+        $this->father_passport_id = $my_parent->father_passport_id;
+        $this->father_phone = $my_parent->father_phone;
+        $this->father_nationality_id = $my_parent->nationality_father_id;
+        $this->father_blood_type = $my_parent->blood_type_father_id;
+        $this->father_religion = $my_parent->religion_father_id;
+        $this->father_address = $my_parent->father_address;
+
+        $this->Email = $my_parent->email;
+        $this->Password = $my_parent->password;
+        $this->mother_name = $my_parent->getTranslation('mother_name', 'ar');
+        $this->mother_name_en = $my_parent->getTranslation('mother_name', 'en');
+        $this->mother_job_en = $my_parent->getTranslation('mother_job', 'en');
+        $this->mother_job = $my_parent->getTranslation('mother_job', 'ar');
+        $this->mother_national_id = $my_parent->mother_national_id;
+        $this->mother_passport_id = $my_parent->mother_passport_id;
+        $this->mother_phone = $my_parent->mother_phone;
+        $this->mother_nationality_id = $my_parent->nationality_mother_id;
+        $this->mother_blood_type = $my_parent->blood_type_mother_id;
+        $this->mother_religion = $my_parent->religion_mother_id;
+        $this->mother_address = $my_parent->mother_address;
+    }
+
+    public function firstEditSubmit()
+    {
+        $this->edit_mode = true;
+        $this->currentStep = 2;
+    }
+
+    public function secondEditSubmit()
+    {
+        $this->edit_mode = true;
+        $this->currentStep = 3;
+    }
+
+    public function submitEditForm()
+    {
+        if($this->parent_id) {
+            $my_parent = My_Parent::find($this->parent_id);
+
+            if(!empty($this->attachments)) {
+                foreach($this->attachments as $attachment) {
+                    // storeAs (Directory[ Folder ], File_name, Disk);
+                    $attachment->storeAs($this->father_national_id, $attachment->getClientOriginalName(), $disk='parent_attachment');
+
+                    ParentAttachment::insert([
+                        'file_name' => $attachment->getClientOriginalName(),
+                        'parent_id' => My_Parent::latest()->first()->id,
+                    ]);
+                }
+            }
+
+            $my_parent->update([
+                'email' => $this->Email,
+                'password' => $this->Password,
+                'father_name' => ['en' => $this->father_name_en, 'ar' => $this->father_name],
+                'father_job' => ['en' => $this->father_job_en, 'ar' => $this->father_job],
+                'father_national_id' => $this->father_national_id,
+                'father_passport_id' => $this->father_passport_id,
+                'father_phone' => $this->father_phone,
+                'nationality_father_id' => $this->father_nationality_id,
+                'blood_type_father_id' => $this->father_blood_type,
+                'religion_father_id' => $this->father_religion,
+                'father_address' => $this->father_address,
+
+                'mother_name' => ['en' => $this->mother_name_en, 'ar' => $this->mother_name],
+                'mother_job' => ['en' => $this->mother_job_en, 'ar' => $this->mother_job],
+                'mother_national_id' => $this->mother_national_id,
+                'mother_passport_id' => $this->mother_passport_id,
+                'mother_phone' => $this->mother_phone,
+                'nationality_mother_id' => $this->mother_nationality_id,
+                'blood_type_mother_id' => $this->mother_blood_type,
+                'religion_mother_id' => $this->mother_religion,
+                'mother_address' => $this->mother_address,
+            ]);
+        }
+
+        $this->show_table = true;
+        $this->currentStep = 1;
+        $this->edit_mode = false;
+        $this->successMessage = __('parent-page.Edit');
+
+    }
+
+    public function delete($id)
+    {
+        $my_parent = My_Parent::find($id);
+        $attachments = ParentAttachment::where('parent_id', $id)->get();
+
+        if($attachments) {
+            foreach($attachments as $attachment) {
+                unlink(public_path('attachment/' . $my_parent->father_national_id . '/' . $attachment->file_name));
+                $attachment->delete();
+            }
+        }
+
+        $my_parent->delete();
+        $this->successMessage = __('parent-page.delete');
     }
 }

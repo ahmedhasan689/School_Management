@@ -137,15 +137,15 @@
                         </a>
                         <ul id="parent-menu" class="collapse" data-parent="#sidebarnav">
                             <li>
-                                <a href="#">
+                                <a href="{{ route('parent.index') }}">
                                     {{ __('main-nav.Parent_List') }}
                                 </a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{ route('parent.create') }}">
                                     {{ __('main-nav.Add_Parent') }}
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>
 
