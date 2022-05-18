@@ -24,5 +24,7 @@ return [
     'Parent' => 'Parent',
     'Parent_List' => 'Parent List',
     'Add_Parent' => 'Add Parent',
+    'Teacher' => 'Teacher',
+    'Teacher_List' => 'Teacher List',
 
 ];

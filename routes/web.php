@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\GradesController;
 use App\Http\Controllers\Dashboard\ClassroomsController;
 use App\Http\Controllers\Dashboard\SectionController;
+use App\Http\Controllers\Dashboard\TeacherController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -98,5 +99,19 @@ Route::group(
             Route::view('/', 'livewire.index')->name('index');
         });
         // End Parent Route [ **No Controller Just Livewire** ]
+
+        // Start Teacher Route
+        Route::group([
+            'prefix' => 'teachers',
+            'as' => 'teacher.'
+        ], function() {
+            Route::get('/', [TeacherController::class, 'index'])->name('index');
+            Route::get('/create', [TeacherController::class, 'create'])->name('create');
+            Route::post('/', [TeacherController::class, 'store'])->name('store');
+            Route::get('/{id}/edit', [TeacherController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [TeacherController::class, 'update'])->name('update');
+            Route::delete('/', [TeacherController::class, 'destroy'])->name('delete');
+        });
+        // End Teacher Route
     }
 );
