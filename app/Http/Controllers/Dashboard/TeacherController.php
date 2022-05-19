@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
+use App\Models\Gender;
 use Illuminate\Http\Request;
+use App\Models\Specialization;
+use App\Http\Controllers\Controller;
 use App\Repository\TeacherInterface;
 
 class TeacherController extends Controller
@@ -25,7 +27,10 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        return $this->teacher->getAllTeachers();
+        $teachers = $this->teacher->getAllTeachers();
+
+        return view('pages.teacher.index', compact('teachers'));
+
     }
 
     /**
@@ -35,7 +40,9 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+        $specializations = $this->teacher->getSpecialization();
+        $genders = $this->teacher->getGender();
+        return view('pages.teacher.create', compact('specializations', 'genders'));
     }
 
     /**
@@ -46,7 +53,7 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->teacher->storeTeacher($request);
     }
 
     /**
