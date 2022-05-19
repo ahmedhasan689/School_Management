@@ -75,7 +75,10 @@ class TeacherController extends Controller
      */
     public function edit($id)
     {
-        //
+        $teacher = $this->teacher->getTeacher($id);
+        $specializations = $this->teacher->getSpecialization();
+        $genders = $this->teacher->getGender();
+        return view('pages.teacher.edit', compact('teacher', 'specializations', 'genders'));
     }
 
     /**
@@ -87,7 +90,7 @@ class TeacherController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return $this->teacher->updateTeacher($request, $id);
     }
 
     /**
@@ -96,8 +99,8 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        return $this->teacher->deleteTeacher($request);
     }
 }

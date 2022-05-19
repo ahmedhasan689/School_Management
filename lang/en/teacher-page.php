@@ -15,4 +15,7 @@ return [
     'Choose' => 'Choose',
     'Next' => 'Next',
     'Create' => 'Teacher Successfully Created!',
+    'Update' => 'Teacher Successfully Updated!',
+    'Delete' => 'Teacher Successfully Deleted!',
+    'Delete_Teacher' => 'Delete Teacher',
 ];
