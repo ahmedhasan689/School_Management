@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Repository\TeacherInterface;
-use App\Repository\TeacherRepository;
+use App\Repository\Teacher\TeacherInterface;
+use App\Repository\Teacher\TeacherRepository;
 use Illuminate\Support\ServiceProvider;
 
 class TeacherServiceProvider extends ServiceProvider

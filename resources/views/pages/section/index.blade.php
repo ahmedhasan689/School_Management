@@ -185,8 +185,28 @@
                                                                         </option>
                                                                     </select>
                                                                 </div>
-                                                                <br>
 
+                                                                <br>
+                                                                <div class="col">
+                                                                    <label for="inputName" class="control-label">
+                                                                        {{ __('section-page.Teacher_Name') }}
+                                                                    </label>
+
+                                                                    <select name="teacher_id[]" class="form-control" id="exampleFormControlSelect2" multiple>
+                                                                        @foreach($section->teachers as $teacher)
+                                                                            <option value="{{ $teacher['id'] }}" selected>
+                                                                                {{ $teacher['name'] }}
+                                                                            </option>
+                                                                        @endforeach
+
+                                                                        @foreach($teachers as $teacher)
+                                                                            <option value="{{ $teacher->id }}">
+                                                                                {{ $teacher->name }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                                <br>
                                                                 <div class="col">
                                                                     <div class="form-check">
                                                                         <lable>

@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Models\Gender;
-use Illuminate\Http\Request;
-use App\Models\Specialization;
 use App\Http\Controllers\Controller;
-use App\Repository\TeacherInterface;
+use App\Repository\Teacher\TeacherInterface;
+use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
     /**
-     * @var App\Repository\TeacherInterface;
+     * @var App\Repository\Teacher\TeacherInterface;
      */
     protected $teacher;
 

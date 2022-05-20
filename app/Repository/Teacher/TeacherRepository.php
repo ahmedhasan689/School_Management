@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repository\Teacher;
 
 use App\Models\Gender;
-use App\Models\Teacher;
 use App\Models\Specialization;
+use App\Models\Teacher;
 use Illuminate\Support\Facades\Hash;
 
 class TeacherRepository implements TeacherInterface {

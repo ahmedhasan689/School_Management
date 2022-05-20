@@ -113,12 +113,24 @@ class SectionController extends Controller
             'name_en' => ['required'],
         ]);
 
-        $section->update([
-            'section_name' => ['ar' => $request->name_ar, 'en' => $request->name_en],
-            'grade_id' => $request->Grade_id,
-            'classroom_id' => $request->Class_id,
-            'status' => $request->status,
-        ]);
+//        $section->update([
+//            'section_name' => ['ar' => $request->name_ar, 'en' => $request->name_en],
+//            'grade_id' => $request->Grade_id,
+//            'classroom_id' => $request->Class_id,
+//            'status' => $request->status,
+//        ]);
+
+        $section->section_name = ['ar' => $request->name_ar, 'en' => $request->name_en];
+        $section->grade_id = $request->Grade_id;
+        $section->classroom_id = $request->Class_id;
+        $section->Status = 'Active';
+
+        if (isset($request->teacher_id)) {
+            $section->teachers()->sync($request->teacher_id);
+        }else{
+            $section->teachers()->sync(array());
+        }
+        $section->save();
 
         toastr()->success( __('section-page.section_updated') );
 
