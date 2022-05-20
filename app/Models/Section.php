@@ -33,4 +33,10 @@ class Section extends Model
         return $this->belongsTo(Grade::class);
     }
 
+    // With Teacher
+    public function teachers()
+    {
+        return $this->belongsToMany(Teacher::class, 'section_teachers');
+    }
+
 }

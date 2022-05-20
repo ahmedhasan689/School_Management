@@ -23,5 +23,6 @@ return [
     'Grade_name' => 'أسم المرحلة',
     'Class_name' => 'اسم الصف',
     'Delete_Section' => 'حذف قسم',
+    'Teacher_Name' => 'أسم المعلم',
 
 ];

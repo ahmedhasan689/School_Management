@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Grade;
 use App\Models\Section;
 use App\Models\Classroom;
+use App\Models\SectionTeacher;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -22,7 +24,9 @@ class SectionController extends Controller
 
         $list_grades = Grade::all();
 
-        return view('pages.section.index', compact('grades', 'list_grades'));
+        $teachers = Teacher::all();
+
+        return view('pages.section.index', compact('grades', 'list_grades', 'teachers'));
     }
 
     /**
@@ -47,13 +51,23 @@ class SectionController extends Controller
             'name_ar' => ['required'],
             'name_en' => ['required'],
         ]);
+//
+//       Section::create([
+//           'section_name' => ['ar' => $request->name_ar, 'en' => $request->name_en],
+//           'status' => 'Active',
+//           'grade_id' => $request->Grade_id,
+//           'classroom_id' => $request->Class_id,
+//        ]);
 
-        Section::create([
-            'section_name' => ['ar' => $request->name_ar, 'en' => $request->name_en],
-            'status' => 'Active',
-            'grade_id' => $request->Grade_id,
-            'classroom_id' => $request->Class_id,
-        ]);
+        $section = new Section();
+
+        $section->section_name = ['ar' => $request->name_ar, 'en' => $request->name_en];
+        $section->grade_id = $request->Grade_id;
+        $section->classroom_id = $request->Class_id;
+        $section->Status = 'Active';
+        $section->save();
+        $section->teachers()->attach($request->teacher_id);
+
 
         toastr()->success( __('section-page.section_created') );
 

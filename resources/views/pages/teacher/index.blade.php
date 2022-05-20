@@ -85,6 +85,7 @@
                                                 </td>
                                             </tr>
 
+                                            {{-- Delete Modal --}}
                                             <div class="modal fade" id="delete_Teacher-{{ $teacher->id }}"
                                                 tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                                 aria-hidden="true">

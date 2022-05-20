@@ -307,8 +307,8 @@
                                 </div>
 
                             </div>
-                            <br>
 
+                            <br>
 
                             {{-- Grade Name --}}
                             <div class="col">
@@ -336,6 +336,22 @@
                                     {{ __('section-page.class-name') }}
                                 </label>
                                 <select name="Class_id" class="custom-select"></select>
+                            </div>
+
+                            <br>
+
+                            {{-- Teacher Name --}}
+                            <div class="col">
+                                <label for="inputName" class="control-label">
+                                    {{ __('section-page.Teacher_Name') }}
+                                </label>
+                                <select name="teacher_id[]" class="form-control" id="exampleFormControlSelect2" multiple>
+                                    @foreach($teachers as $teacher)
+                                        <option value="{{ $teacher->id }}">
+                                            {{ $teacher->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             {{-- Footer --}}
