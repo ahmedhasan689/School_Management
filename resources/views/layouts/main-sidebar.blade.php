@@ -168,11 +168,28 @@
                                     {{ __('main-nav.Teacher_List') }}
                                 </a>
                             </li>
-                            {{-- <li>
-                                <a href="{{ route('parent.create') }}">
-                                    {{ __('main-nav.Add_Parent') }}
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#student-menu">
+                            <div class="pull-left">
+                                <i class="fa-solid fa-user-graduate"></i>
+                                <span class="right-nav-text">
+                                    {{ __('main-nav.Student') }}
+                                </span>
+                            </div>
+                            <div class="pull-right">
+                                <i class="ti-plus"></i>
+                            </div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="student-menu" class="collapse" data-parent="#sidebarnav">
+                            <li>
+                                <a href="{{ route('student.index') }}">
+                                    {{ __('main-nav.Student_List') }}
                                 </a>
-                            </li> --}}
+                            </li>
                         </ul>
                     </li>
 

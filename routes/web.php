@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\GradesController;
 use App\Http\Controllers\Dashboard\ClassroomsController;
 use App\Http\Controllers\Dashboard\SectionController;
+use App\Http\Controllers\Dashboard\StudentController;
 use App\Http\Controllers\Dashboard\TeacherController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -113,5 +114,23 @@ Route::group(
             Route::delete('/', [TeacherController::class, 'destroy'])->name('delete');
         });
         // End Teacher Route
+
+        // Start Student Route
+        Route::group([
+            'prefix' => 'students',
+            'as' => 'student.',
+        ], function() {
+            Route::get('/', [StudentController::class, 'index'])->name('index');
+            Route::get('/create', [StudentController::class, 'create'])->name('create');
+            Route::post('/', [StudentController::class, 'store'])->name('store');
+            Route::get('/{id}/edit', [StudentController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [StudentController::class, 'update'])->name('update');
+            Route::delete('/{id}', [StudentController::class, 'destroy'])->name('delete');
+
+            // For Ajax
+            Route::get('/getClassrooms/{id}', [StudentController::class, 'getClassrooms'])->name('classroom');
+            Route::get('/getSections/{id}', [StudentController::class, 'getSections'])->name('section');
+        });
+        // End Student Route
     }
 );

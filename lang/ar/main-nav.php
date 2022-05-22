@@ -26,5 +26,7 @@ return [
     'Add_Parent' => 'إضافة ولي أمر',
     'Teacher' => 'المدرسين',
     'Teacher_List' => 'قائمة المدرسين',
+    'Student' => 'الطلاب',
+    'Student_List' => 'قائمة الطلاب',
 
 ];
