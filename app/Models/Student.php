@@ -72,4 +72,10 @@ class Student extends Model
     {
         return $this->belongsTo(My_Parent::class, 'parent_id');
     }
+
+    // Morph To Relation With Image Model
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
 }

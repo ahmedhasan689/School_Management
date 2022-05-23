@@ -52,7 +52,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('student.update', $student->id) }}" autocomplete="off" method="POST">
+                    <form action="{{ route('student.update', $student->id) }}" autocomplete="off" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -259,6 +259,17 @@
                                 </div>
                             </div>
                         </div><br>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="academic_year">
+                                    {{ __('student-page.Attachments') }} :
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="file" accept="image/*" name="images[]" multiple>
+                            </div>
+                        </div>
+                        <br>
                         <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">
                             {{ __('student-page.submit') }}
                         </button>

@@ -4,12 +4,15 @@ namespace App\Repository\Student;
 
 use App\Models\Grade;
 use App\Models\Gender;
+use App\Models\Image;
 use App\Models\Section;
 use App\Models\BloodType;
 use App\Models\Classroom;
 use App\Models\My_Parent;
 use App\Models\Nationality;
 use App\Models\Student;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class StudentRepository implements StudentInterface {
@@ -57,24 +60,52 @@ class StudentRepository implements StudentInterface {
             'academic_year' => 'required'
         ]);
 
-        Student::create([
-            'name' => ['ar' => $request->name_ar, 'en' => $request->name_en],
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'gender_id' => $request->gender_id,
-            'nationality_id' => $request->nationality_id,
-            'blood_type_id' => $request->blood_id,
-            'grade_id' => $request->Grade_id,
-            'classroom_id' => $request->Classroom_id,
-            'section_id' => $request->section_id,
-            'parent_id' => $request->parent_id,
-            'date_birth' => $request->date_birth,
-            'academic_year' => $request->academic_year,
-        ]);
+        DB::beginTransaction();
 
-        toastr()->success( __('student-page.Created') );
+        try {
+            Student::create([
+                'name' => ['ar' => $request->name_ar, 'en' => $request->name_en],
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'gender_id' => $request->gender_id,
+                'nationality_id' => $request->nationality_id,
+                'blood_type_id' => $request->blood_id,
+                'grade_id' => $request->Grade_id,
+                'classroom_id' => $request->Classroom_id,
+                'section_id' => $request->section_id,
+                'parent_id' => $request->parent_id,
+                'date_birth' => $request->date_birth,
+                'academic_year' => $request->academic_year,
+            ]);
 
-        return redirect()->route('student.index');
+            $student = Student::latest()->first();
+
+            if($request->hasFile('images')) {
+                foreach($request->file('images') as $image) {
+                    $file_name = $image->getClientOriginalName();
+                    $image->storeAs('/images/students/'. $student->name, $file_name, 'images');
+
+                    $image = new Image();
+                    $image->file_name = $file_name;
+                    $image->imageable_id = $student->id;
+                    $image->imageable_type = 'App\Models\Student';
+                    $image->created_at = Carbon::now();
+                    $image->updated_at = Carbon::now();
+                    $image->save();
+                }
+            }
+
+            DB::commit();
+
+            toastr()->success( __('student-page.Created') );
+            return redirect()->route('student.index');
+
+        }catch(\Exception $e){
+            DB::rollBack();
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+
+
 
     }
 
@@ -118,6 +149,20 @@ class StudentRepository implements StudentInterface {
             $password = $student->password;
         }
 
+        if($request->hasFile('images')) {
+            foreach($request->file('images') as $image) {
+                $file_name = $image->getClientOriginalName();
+                $image->storeAs('images/students/'. $student->name, $file_name, 'images');
+
+                $image = new Image();
+                $image->file_name = $file_name;
+                $image->imageable_id = $student->id;
+                $image->imageable_type = 'App\Models\Student';
+                $image->created_at = Carbon::now();
+                $image->updated_at = Carbon::now();
+                $image->save();
+            }
+        }
 
         $student->update([
             'name' => ['ar' => $request->name_ar, 'en' => $request->name_en],

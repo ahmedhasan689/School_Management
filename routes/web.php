@@ -132,5 +132,6 @@ Route::group(
             Route::get('/getSections/{id}', [StudentController::class, 'getSections'])->name('section');
         });
         // End Student Route
+
     }
 );

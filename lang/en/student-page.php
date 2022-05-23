@@ -28,5 +28,6 @@ return [
     'Updated' => 'Student Successfully Updated',
     'Deleted' => 'Student Successfully Deleted',
     'Deleted_Student' => 'Deleted Student',
+    'Attachments' => 'Attachments',
 
 ];
