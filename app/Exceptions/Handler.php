@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -36,6 +37,13 @@ class Handler extends ExceptionHandler
     {
         $this->reportable(function (Throwable $e) {
             //
+        });
+
+         // Download Image Exception From Show Page
+        $this->renderable(function (Throwable $e) {
+            if ($e instanceof FileNotFoundException) {
+                return redirect()->back()->with('success', __('student-page.File Not Found'));
+            }
         });
     }
 }

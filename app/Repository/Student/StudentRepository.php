@@ -14,9 +14,14 @@ use App\Models\Student;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class StudentRepository implements StudentInterface {
 
+    /**
+     * @return \Illuminate\Contracts\View\View
+     * Create Page
+     */
     public function createStudent()
     {
         $data = [];
@@ -30,18 +35,33 @@ class StudentRepository implements StudentInterface {
         return view('pages.student.create', $data);
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     * get All Classroom
+     */
     public function getClassrooms($id)
     {
         $list_Classroom = Classroom::where('Grade_id', $id)->pluck('class_name', 'id');
         return $list_Classroom;
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     * Get All Sections
+     */
     public function getSections($id)
     {
         $list_Section= Section::where('classroom_id', $id)->pluck('section_name', 'id');
         return $list_Section;
     }
 
+    /**
+     * @param $request
+     * @return \Illuminate\Http\RedirectResponse
+     * To Store New Student => Use BeginTransaction
+     */
     public function storeStudent($request)
     {
         $request->validate([
@@ -109,6 +129,11 @@ class StudentRepository implements StudentInterface {
 
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\View
+     * To return Edit Page
+     */
     public function editStudent($id)
     {
         $data = [];
@@ -123,6 +148,12 @@ class StudentRepository implements StudentInterface {
         return view('pages.student.edit', $data);
     }
 
+    /**
+     * @param $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     * For Update Student Page
+     */
     public function updateStudent($request, $id)
     {
         $student = Student::findOrFail($id);
@@ -185,6 +216,11 @@ class StudentRepository implements StudentInterface {
 
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     * Delete Student
+     */
     public function deleteStudent($id)
     {
         $student = Student::findOrFail($id);
@@ -196,4 +232,67 @@ class StudentRepository implements StudentInterface {
         return redirect()->route('student.index');
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\View
+     * => For Show Page
+     */
+    public function showStudent($id)
+    {
+        $student = Student::findOrFail($id);
+
+        return view('pages.student.show', compact('student'));
+    }
+
+    /**
+     * @param $request
+     * @return \Illuminate\Http\RedirectResponse
+     * For Upload Image in Show Page
+     */
+    public function images($request)
+    {
+        foreach($request->file('images') as $image) {
+            $file_name = $image->getClientOriginalName();
+            $image->storeAs('/images/students/'. $request->student_name, $file_name, 'images');
+
+            $images = new Image();
+            $images->file_name = $file_name;
+            $images->imageable_id = $request->student_id;
+            $images->imageable_type = 'App\Models\Student';
+            $images->created_at = Carbon::now();
+            $images->updated_at = Carbon::now();
+            $images->save();
+        }
+        toastr()->success( __('student-page.Created') );
+
+        return redirect()->back();
+
+    }
+
+    /**
+     * @param $studentName
+     * @param $fileName
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     * Download Image From Show Page
+     */
+    public function downloadImage($studentName, $fileName)
+    {
+        return response()->download(public_path('images/students/'. $studentName . '/' . $fileName));
+    }
+
+    /**
+     * @param $request
+     * @return \Illuminate\Http\RedirectResponse
+     * Delete Image
+     */
+    public function deleteImage($request)
+    {
+        Storage::disk('images')->delete('/images/students/' . $request->student_name . '/' . $request->file_name);
+
+        Image::where('id', $request->id)->where('file_name', $request->file_name)->delete();
+
+        toastr()->success( __('student-page.Deleted') );
+
+        return redirect()->back();
+    }
 }

@@ -25,4 +25,5 @@ return [
     'Class_name' => 'Class Name',
     'Delete_Section' => 'Delete Section',
     'Teacher_Name' => 'Teacher Name',
+
 ];

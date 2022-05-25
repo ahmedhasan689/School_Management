@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Student;
 use App\Repository\Student\StudentInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller
 {
@@ -59,7 +60,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->student->showStudent($id);
     }
 
     /**
@@ -96,13 +97,46 @@ class StudentController extends Controller
         return $this->student->deleteStudent($id);
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     * Get Classrooms [ Ajax Request ]
+     */
     public function getClassrooms($id)
     {
         return $this->student->getClassrooms($id);
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     * Get Sections [ Ajax Request ]
+     */
     public function getSections($id)
     {
         return $this->student->getSections($id);
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     * Uplaod Image In Show Function
+     */
+    public function uploadImage(Request $request)
+    {
+        return $this->student->images($request);
+    }
+
+    /**
+     * Download Image
+     */
+    public function download($studentName, $fileName)
+    {
+        return $this->student->downloadImage($studentName, $fileName);
+    }
+
+    public function deleteImage(Request $request)
+    {
+        return $this->student->deleteImage($request);
     }
 }

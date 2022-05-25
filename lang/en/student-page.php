@@ -29,5 +29,13 @@ return [
     'Deleted' => 'Student Successfully Deleted',
     'Deleted_Student' => 'Deleted Student',
     'Attachments' => 'Attachments',
-
+    'student_details' => 'Student Details',
+    'filename' => 'File Name',
+    'created_at' => 'Created At',
+    'Download' => 'Download',
+    'delete' => 'delete',
+    'File Not Found' => 'File Not Found',
+    'Close' => 'Close',
+    'Delete_attachment' => 'Delete Attachment',
+    'Delete_attachment_tilte' => 'Attachment Name'
 ];

@@ -29,5 +29,14 @@ return [
     'Deleted' => 'تم حذف بيانات الطالب بنجاح',
     'Deleted_Student' => 'حذف طالب',
     'Attachments' => 'المرفقات',
+    'student_details' => 'معلومات الطالب',
+    'filename' => 'أسم الملف',
+    'created_at' => 'تم الإنشاء منذ',
+    'Download' => 'تحميل',
+    'delete' => 'حذف',
+    'File Not Found' => 'الملف غير موجود',
+    'Close' => 'إغلاق',
+    'Delete_attachment' => 'حذف المرفق',
+    'Delete_attachment_tilte' => 'أسم المرفق'
 
 ];

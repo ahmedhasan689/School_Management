@@ -79,7 +79,7 @@
                                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_Student-{{ $student->id }}" title="{{ __('Grades___.Delete') }}">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
-                                                    <a href="#" class="btn btn-warning btn-sm" role="button" aria-pressed="true">
+                                                    <a href="{{ route('student.show', ['id' => $student->id]) }}" class="btn btn-warning btn-sm" role="button" aria-pressed="true">
                                                         <i class="far fa-eye"></i>
                                                     </a>
                                                 </td>

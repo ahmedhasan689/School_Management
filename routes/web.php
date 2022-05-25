@@ -121,6 +121,7 @@ Route::group(
             'as' => 'student.',
         ], function() {
             Route::get('/', [StudentController::class, 'index'])->name('index');
+            Route::get('/{id}', [StudentController::class, 'show'])->name('show');
             Route::get('/create', [StudentController::class, 'create'])->name('create');
             Route::post('/', [StudentController::class, 'store'])->name('store');
             Route::get('/{id}/edit', [StudentController::class, 'edit'])->name('edit');
@@ -130,6 +131,11 @@ Route::group(
             // For Ajax
             Route::get('/getClassrooms/{id}', [StudentController::class, 'getClassrooms'])->name('classroom');
             Route::get('/getSections/{id}', [StudentController::class, 'getSections'])->name('section');
+
+            // show Page (Upload Image - Download - Delete Image)
+            Route::post('/upload-image', [StudentController::class, 'uploadImage'])->name('image');
+            Route::get('/download-image/{studentName}/{fileName}', [StudentController::class, 'download'])->name('download');
+            Route::post('/delete-image', [StudentController::class, 'deleteImage'])->name('deleteImage');
         });
         // End Student Route
 
