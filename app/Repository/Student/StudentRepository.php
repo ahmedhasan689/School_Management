@@ -20,7 +20,7 @@ class StudentRepository implements StudentInterface {
 
     /**
      * @return \Illuminate\Contracts\View\View
-     * Create Page
+     * To return Edit Page
      */
     public function createStudent()
     {

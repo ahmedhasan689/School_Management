@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\PromotionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\GradesController;
@@ -121,9 +122,9 @@ Route::group(
             'as' => 'student.',
         ], function() {
             Route::get('/', [StudentController::class, 'index'])->name('index');
-            Route::get('/{id}', [StudentController::class, 'show'])->name('show');
             Route::get('/create', [StudentController::class, 'create'])->name('create');
             Route::post('/', [StudentController::class, 'store'])->name('store');
+            Route::get('/{id}', [StudentController::class, 'show'])->name('show');
             Route::get('/{id}/edit', [StudentController::class, 'edit'])->name('edit');
             Route::put('/{id}', [StudentController::class, 'update'])->name('update');
             Route::delete('/{id}', [StudentController::class, 'destroy'])->name('delete');
@@ -138,6 +139,20 @@ Route::group(
             Route::post('/delete-image', [StudentController::class, 'deleteImage'])->name('deleteImage');
         });
         // End Student Route
+
+        // Start Promotions Route
+        Route::group([
+           'prefix' => 'promotions',
+           'as' => 'promotion.'
+        ], function() {
+            Route::get('/', [PromotionController::class, 'index'])->name('index');
+            Route::get('/create', [PromotionController::class, 'create'])->name('create');
+            Route::post('/', [PromotionController::class, 'store'])->name('store');
+            Route::get('/{id}/edit', [PromotionController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [PromotionController::class, 'update'])->name('update');
+            Route::delete('/{id}', [PromotionController::class, 'destroy'])->name('delete');
+        });
+        // End Promotions Route
 
     }
 );

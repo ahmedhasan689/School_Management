@@ -37,5 +37,6 @@ return [
     'File Not Found' => 'File Not Found',
     'Close' => 'Close',
     'Delete_attachment' => 'Delete Attachment',
-    'Delete_attachment_tilte' => 'Attachment Name'
+    'Delete_attachment_tilte' => 'Attachment Name',
+    'Upgrade' => 'All Student Are Moved To Next Level',
 ];

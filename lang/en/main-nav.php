@@ -27,6 +27,9 @@ return [
     'Teacher' => 'Teacher',
     'Teacher_List' => 'Teacher List',
     'Student' => 'Student',
+    'Add_Student' => 'Add New Student',
     'Student_List' => 'Student List',
+    'Promotion' => 'Student Promotions',
+    'Promotion_List' => 'Promotion List',
 
 ];

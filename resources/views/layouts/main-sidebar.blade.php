@@ -185,13 +185,26 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="student-menu" class="collapse" data-parent="#sidebarnav">
+                           <li>
+                               <a href="{{ route('student.create') }}">
+                                    {{ __('main-nav.Add_Student') }}
+                               </a>
+                           </li>
+
                             <li>
                                 <a href="{{ route('student.index') }}">
                                     {{ __('main-nav.Student_List') }}
                                 </a>
                             </li>
+
+                            <li>
+                                <a href="{{ route('promotion.index') }}">
+                                    {{ __('main-nav.Promotion') }}
+                                </a>
+                            </li>
                         </ul>
                     </li>
+
 
                     <!-- menu item chat-->
                     {{-- <li>

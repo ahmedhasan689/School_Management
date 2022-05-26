@@ -37,6 +37,7 @@ return [
     'File Not Found' => 'الملف غير موجود',
     'Close' => 'إغلاق',
     'Delete_attachment' => 'حذف المرفق',
-    'Delete_attachment_tilte' => 'أسم المرفق'
+    'Delete_attachment_tilte' => 'أسم المرفق',
+    'Upgrade' => 'كل الطلاب أنتقلوا للمرحلة المقبلة بنجاح',
 
 ];
